@@ -1,6 +1,6 @@
 import React from 'react'
 import getBase from '@/app/api/base'
-import ShipmentSlip from '../../components/ShipmentSlip'
+import ShipmentSlip from '../components/ShipmentSlip'
 import { FullShipment } from '@/interfaces/interfaces'
 // import getShipment from '@/app/actions/getShipment'
 
@@ -18,8 +18,8 @@ const page = async ({
   params: { id: string };
   searchParams?: { [key: string]: string | string[] | undefined };
 }) => {
-  const query = params.id
-  const idArray: string[] = query ? (query as string).split("+") : []
+  const query = searchParams?.q
+  const idArray: string[] = query ? (query as string).split(" ") : []
   const shipments : FullShipment[] = await Promise.all(idArray.map(async (id:string) => {
     return await getShipment(id)
   }))
