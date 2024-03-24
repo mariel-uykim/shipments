@@ -9,7 +9,7 @@ type ShipmentSlipProps = {
 
 const ShipmentSlip = ({ shipment }: ShipmentSlipProps) => {
   const componentRef = useRef<HTMLDivElement>(null)
-    if (shipment.length === 0) {
+    if (shipment.length === 0 && shipment) {
         return(
             <div>
                 <p>Nothing to print!</p>
@@ -24,7 +24,7 @@ const ShipmentSlip = ({ shipment }: ShipmentSlipProps) => {
           <div key={ship.salesorder_id}>
             <h2 className="font-bold text-md text-center py-2">Cocomart Dispatch Slip</h2>
             <div className="grid grid-cols-2 gap-4">
-                {ship.custom_fields && ship.custom_fields.map((cf) => {
+                {ship && ship.custom_fields && ship.custom_fields?.map((cf) => {
                     return <h4 className="p-1 text-center" key={cf.label}>{cf.label}:{cf.value}</h4>
                 })}
                 <h4 className="p-1 text-center">date:{ship.date.toString()}</h4>
@@ -36,7 +36,7 @@ const ShipmentSlip = ({ shipment }: ShipmentSlipProps) => {
             </div>
             <div className='text-center'>______________________________</div>
             <div>
-              {ship.line_items.sort((a, b) => a.name.localeCompare(b.name)).map((item) => (
+              {ship.line_items.slice().sort((a, b) => a.name.localeCompare(b.name)).map((item) => (
                 <div key={item.item_id} className="flex justify-between">
                   <span className="mr-2">{item.name}</span>
                   <span>{item.quantity}</span>
