@@ -1,5 +1,4 @@
 'use client'
-import { FullOrder, ResultsParams, Shipment } from '@/interfaces/interfaces'
 import { useState, useRef } from 'react';
 import ReactToPrint from "react-to-print"
 import { FullShipment } from '@/interfaces/interfaces';
@@ -18,8 +17,6 @@ const ShipmentSlip = ({ shipment }: ShipmentSlipProps) => {
         )
     }
 
-
-  
   return (
     <div>
       <div className='bg-white text-black w-3/5 px-4 py-2 text-sm' ref={componentRef}>
@@ -27,7 +24,7 @@ const ShipmentSlip = ({ shipment }: ShipmentSlipProps) => {
           <div key={ship.salesorder_id}>
             <h2 className="font-bold text-md text-center py-2">Cocomart Dispatch Slip</h2>
             <div className="grid grid-cols-2 gap-4">
-                {ship.custom_fields.map((cf) => {
+                {ship.custom_fields && ship.custom_fields.map((cf) => {
                     return <h4 className="p-1 text-center" key={cf.label}>{cf.label}:{cf.value}</h4>
                 })}
                 <h4 className="p-1 text-center">date:{ship.date.toString()}</h4>
