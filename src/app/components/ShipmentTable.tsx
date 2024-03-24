@@ -37,7 +37,7 @@ const ShipmentForm: React.FC<CheckboxTableProps> = ({ shipments }) => {
       const idArray = selectedItems.map(obj => obj.shipment_id)
       const arrayString = idArray.join("+")
 
-      push(`${baseURL}/shipment_results/${arrayString}`)
+      push(`${baseURL}/shipment_results?q=${arrayString}`)
 
   }
 

@@ -36,7 +36,7 @@ const ShipmentSlip = ({ shipment }: ShipmentSlipProps) => {
             </div>
             <div className='text-center'>______________________________</div>
             <div>
-              {ship.line_items.slice().sort((a, b) => a.name.localeCompare(b.name)).map((item) => (
+              {ship.line_items && ship.line_items.slice().sort((a, b) => a.name.localeCompare(b.name)).map((item) => (
                 <div key={item.item_id} className="flex justify-between">
                   <span className="mr-2">{item.name}</span>
                   <span>{item.quantity}</span>

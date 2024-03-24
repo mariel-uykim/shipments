@@ -19,7 +19,7 @@ const page = async ({
   searchParams?: { [key: string]: string | string[] | undefined };
 }) => {
   const query = params.id
-  const idArray: string[] = query ? (query as string).split('%2B') : []
+  const idArray: string[] = query ? (query as string).split("+") : []
   const shipments : FullShipment[] = await Promise.all(idArray.map(async (id:string) => {
     return await getShipment(id)
   }))
