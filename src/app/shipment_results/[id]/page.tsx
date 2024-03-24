@@ -23,7 +23,7 @@ const page = async ({
   const shipments : FullShipment[] = await Promise.all(idArray.map(async (id:string) => {
     return await getShipment(id)
   }))
-  console.log("ship: " + JSON.stringify(shipments))
+  
   return (
     <div className=' bg-orange-400 p-5'>
       <ShipmentSlip shipment={shipments}/>
