@@ -16,14 +16,14 @@ const ShipmentSlip = ({ shipment }: ShipmentSlipProps) => {
             </div>
         )
     }
-
+  
   return (
     <div>
       <div className='bg-white text-black w-3/5 px-4 py-2 text-sm' ref={componentRef}>
         {shipment.map((ship) => (
           <div key={ship.salesorder_id}>
             <h2 className="font-bold text-md text-center py-2">Cocomart Dispatch Slip</h2>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="flex flex-col items-start">
                 {ship && ship.custom_fields && ship.custom_fields?.map((cf) => {
                     return <h4 className="p-1 text-center" key={cf.label}>{cf.label}:{cf.value}</h4>
                 })}
@@ -42,6 +42,7 @@ const ShipmentSlip = ({ shipment }: ShipmentSlipProps) => {
                   <span>{item.quantity}</span>
                 </div>
               ))}
+              <div></div>
             </div>
             <div className='my-5 text-xs flex flex-col'>
               <p className='mb-2'>Dispatched by:____________________</p>
