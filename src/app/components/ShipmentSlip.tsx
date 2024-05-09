@@ -27,6 +27,7 @@ const ShipmentSlip = ({ shipment }: ShipmentSlipProps) => {
                 {ship && ship.custom_fields && ship.custom_fields?.map((cf) => {
                     return <h4 className="text-center" key={cf.label}>{cf.label}:{cf.value}</h4>
                 })}
+                <h4 className="p-1 text-center">customer:{ship.customer_name}</h4>
                 <h4 className="p-1 text-center">date:{ship.date && ship.date.toString()}</h4>
             </div>
             <div>
